@@ -1,0 +1,4 @@
+alembic upgrade head
+
+python main.py
+python run_cycle.py
