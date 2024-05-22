@@ -1,12 +1,8 @@
-import os
-
 from dotenv import load_dotenv
-from sqlalchemy import Column, DateTime, Enum, BigInteger, create_engine
+from sqlalchemy import Column, DateTime, Enum, BigInteger
 from sqlalchemy.ext.declarative import declarative_base
 import enum
 from datetime import datetime
-
-from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
 
@@ -26,7 +22,3 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     status = Column(Enum(StatusEnum), default=StatusEnum.alive)
     status_updated_at = Column(DateTime, default=datetime.utcnow)
-
-
-engine = create_engine(os.getenv('DATABASE_URL'))
-Session = sessionmaker(bind=engine)
